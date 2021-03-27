@@ -6,10 +6,10 @@ import { Ionicons } from "@expo/vector-icons";
 export default function Header() {
   return (
     <LinearGradient style={styles.header} colors={["#1ef6ff", "#97c1ff"]}>
-      <Text style={styles.date}>25/03/2021</Text>
+      <Text style={styles.date}>27/03/2021</Text>
       <Text style={styles.city}> Belém</Text>
       <Ionicons name="cloud" color="#fff" size={150} />
-      <Text style={styles.temp}>23º</Text>
+      <Text style={styles.temp}>25º</Text>
     </LinearGradient>
   );
 }
