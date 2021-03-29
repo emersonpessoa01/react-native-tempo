@@ -9,7 +9,7 @@ export default function Header() {
       <Text style={styles.date}>27/03/2021</Text>
       <Text style={styles.city}> Belém</Text>
       <Ionicons name="cloud" color="#fff" size={150} />
-      <Text style={styles.temp}>25º</Text>
+      <Text style={styles.temp}>26º</Text>
     </LinearGradient>
   );
 }
