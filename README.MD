@@ -5,3 +5,5 @@
 * expo install @react-navigation/drawer
 * expo install @expo/vector-icons
 * expo install expo-linear-gradient
+* expo install expo-location
+* expo install axios
