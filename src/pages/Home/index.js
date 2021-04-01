@@ -5,7 +5,7 @@ import Header from "../../pages/components/Header";
 import Conditions from "../../pages/components/Conditions";
 import Forecast from "../../pages/components/Forecast";
 import * as Location from "expo-location";
-import api, { key } from "../../pages/components/api";
+import api, { key } from "../../services/api";
 
 const mylist = [
   {
@@ -93,6 +93,9 @@ const mylist = [
 export default function Home() {
   const [errorMsg, setErrorMsg] = useState();
   const [loading, setLoading] = useState(true);
+  const [weather, setWeather] = useState([]);
+  const [icon, setIcon] = useState({name:"cloud", color:"#fff"});
+const [background, setBackground] = useState([`#1ef6ff", "#97c1ff`]);
 
   useEffect(() => {
     (async () => {
@@ -111,7 +114,13 @@ export default function Home() {
         `weather?key=${key}&lat=${location.coords.latitude}&lon=${location.coords.longitude}`
       );
 
-      console.log(response);
+      // console.log(response.data);
+      setWeather(response.data);
+
+      if(response.data.results.currently === noite){
+        setBackground([`#0c3741", "#0f2f61`])
+      }
+
     })();
   }, []);
 
