@@ -94,8 +94,8 @@ export default function Home() {
   const [errorMsg, setErrorMsg] = useState();
   const [loading, setLoading] = useState(true);
   const [weather, setWeather] = useState([]);
-  const [icon, setIcon] = useState({name:"cloud", color:"#fff"});
-const [background, setBackground] = useState([`#1ef6ff", "#97c1ff`]);
+  const [icon, setIcon] = useState({ name: "cloud", color: "#fff" });
+  const [background, setBackground] = useState([`#1ef6ff", "#97c1ff`]);
 
   useEffect(() => {
     (async () => {
@@ -111,23 +111,36 @@ const [background, setBackground] = useState([`#1ef6ff", "#97c1ff`]);
       // console.log(location.coords.latitude);
       //weather?key=6ef45251&lat=-1.36259&lon=-48.4063325
       const response = await api.get(
-        `weather?key=${key}&lat=${location.coords.latitude}&lon=${location.coords.longitude}`
+        `/weather?key=${key}&lat=${location.coords.latitude}&lon=${location.coords.longitude}`
       );
 
       // console.log(response.data);
       setWeather(response.data);
 
-      if(response.data.results.currently === noite){
-        setBackground([`#0c3741", "#0f2f61`])
+      if (response.data.results.currently === "noite") {
+        setBackground(["#0c3741", "#0f2f61"]);
       }
 
+      switch (response.data.results.condition_slug) {
+        case "clear_day":
+          setIcon({ name: "partly-sunny", color: "#ffb300" });
+          break;
+        case "rain":
+          setIcon({ name: "rainy", color: "#fff" });
+          break;
+        case "storm":
+          setIcon({ name: "rainy", color: "#fff" });
+          break;
+      }
+
+      setLoading(false);
     })();
   }, []);
 
   return (
     <SafeAreaView style={styles.container}>
       <Menu />
-      <Header />
+      <Header background={background} weather={weather} icon={icon} />
       <Conditions />
       <FlatList
         contentContainerStyle={{ paddingBottom: "5%" }}
