@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, StyleSheet, FlatList, View } from "react-native";
+import { Text,SafeAreaView, StyleSheet, FlatList, View } from "react-native";
 import Menu from "../../pages/components/Menu";
 import Header from "../../pages/components/Header";
 import Conditions from "../../pages/components/Conditions";
@@ -140,7 +140,7 @@ export default function Home() {
   if (loading){
     return (
       <View style={styles.container}>
-        <Text style={{ fontSize: 17, fontSize: "italic" }}>
+        <Text>
           Carregando dados...
         </Text>
       </View>
