@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, StyleSheet, FlatList } from "react-native";
+import { SafeAreaView, StyleSheet, FlatList, View } from "react-native";
 import Menu from "../../pages/components/Menu";
 import Header from "../../pages/components/Header";
 import Conditions from "../../pages/components/Conditions";
@@ -95,7 +95,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [weather, setWeather] = useState([]);
   const [icon, setIcon] = useState({ name: "cloud", color: "#fff" });
-  const [background, setBackground] = useState([`#1ef6ff", "#97c1ff`]);
+  const [background, setBackground] = useState(["#1ef6ff", "#97c1ff"]);
 
   useEffect(() => {
     (async () => {
@@ -137,11 +137,21 @@ export default function Home() {
     })();
   }, []);
 
+  if (loading){
+    return (
+      <View style={styles.container}>
+        <Text style={{ fontSize: 17, fontSize: "italic" }}>
+          Carregando dados...
+        </Text>
+      </View>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <Menu />
       <Header background={background} weather={weather} icon={icon} />
-      <Conditions />
+      <Conditions weather={weather} />
       <FlatList
         contentContainerStyle={{ paddingBottom: "5%" }}
         horizontal={true}
