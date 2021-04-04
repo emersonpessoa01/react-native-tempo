@@ -2,12 +2,17 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
-export default function Conditions({weather}) {
+export default function Conditions({ weather }) {
   return (
     <View style={styles.container}>
       <View style={styles.condition}>
-        <Feather name="wind" size={23} color="#1ed6ff" />
-        <Text>{weather.results.wind_speedy}</Text>
+        <Feather 
+        name="wind" 
+        size={23} 
+        color="#1ed6ff" 
+        />
+        <Text style={styles.condition}>{weather.results.wind_speedy}
+        </Text>
       </View>
 
       <View style={styles.condition}>
@@ -16,7 +21,8 @@ export default function Conditions({weather}) {
           size={23}
           color="#1ed6ff"
         />
-        <Text>{weather.results.sunrise}</Text>
+        <Text style={styles.condition}>{weather.results.sunrise}
+        </Text>
       </View>
 
       <View style={styles.condition}>
@@ -25,16 +31,14 @@ export default function Conditions({weather}) {
           size={23}
           color="#1ed6ff"
         />
-        <Text>{weather.results.sunset}</Text>
+        <Text style={styles.condition}>{weather.results.sunset}
+        </Text>
       </View>
 
       <View style={styles.condition}>
-        <Feather
-          name="droplet"
-          size={23}
-          color="#1ed6ff"
-        />
-        <Text>{weather.results.humidity}</Text>
+        <Feather name="droplet" size={23} color="#1ed6ff" />
+        <Text style={styles.condition}>{weather.results.humidity}
+        </Text>
       </View>
     </View>
   );
@@ -46,13 +50,13 @@ const styles = StyleSheet.create({
     padding: 10,
     backgroundColor: "#fff",
     flexDirection: "row",
-    width:'90%',
-    justifyContent:"space-around",
+    width: "90%",
+    justifyContent: "space-around",
     borderRadius: 8,
-
   },
-  condition:{
+  condition: {
     alignItems: "center",
-    justifyContent:"center",
-  }
+    justifyContent: "center",
+    fontSize: 11,
+  },
 });
