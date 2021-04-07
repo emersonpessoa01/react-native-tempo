@@ -141,7 +141,7 @@ export default function Home() {
     return (
       <View style={styles.container}>
         <Text>
-          Carregando dados...
+          Atualizando dados...
         </Text>
       </View>
     );
@@ -156,7 +156,7 @@ export default function Home() {
         contentContainerStyle={{ paddingBottom: "5%" }}
         horizontal={true}
         style={styles.list}
-        data={mylist}
+        data={weather.results.forecast}
         keyExtractor={(item) => item.date}
         renderItem={({ item }) => <Forecast data={item} />}
       />
