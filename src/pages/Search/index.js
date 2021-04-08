@@ -29,7 +29,7 @@ export default function Search() {
 
         <TouchableOpacity style={styles.icon}>
           <Feather 
-            name="seach"
+            name="search"
             color="#fff"
             size={22}
           />
@@ -39,4 +39,44 @@ export default function Search() {
   );
 }
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container:{
+    flex: 1,
+    alignItems: "center",
+    paddingTop:"10%",
+    backgroundColor: "#e8f0ff",
+  },
+  backButton:{
+    flexDirection: "row",
+    alignSelf: "flex-start",
+    alignItems: "center",
+    marginBottom: 10,
+
+  },
+    searchBox:{
+      alignItems: "center",
+      flexDirection: "row",
+      backgroundColor:"#ddd",
+      width:"90%",
+      height:50,
+      borderRadius: 8,
+
+    },
+    input:{
+      width:"85%",
+      height:50,
+      backgroundColor:"#fff",
+      borderTopLeftRadius: 8,
+      borderBottomLeftRadius: 8,
+      padding: 7,
+    },
+    icon:{
+       width:"15%",
+       alignItems: "center",
+       justifyContent: "center",
+       height:50,
+       borderTopRightRadius:8,
+       borderBottomRightRadius:8,
+       backgroundColor:"#1de6ff"
+    }
+});
