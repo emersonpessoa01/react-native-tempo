@@ -6,6 +6,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   TextInput,
+  Keyboard,
 } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import { useNavigation } from "@react-navigation/native";
@@ -22,8 +23,19 @@ export default function Search() {
   const handleSearch = async () => {
     //weather?key=6ef45251&lat=-1.36259&lon=-48.4063325;
     const response = await api.get(`/weather?key=${key}&city_name=${input}`);
-    console.log(response.data.results.city);
+    // console.log(response.data.results.city_name);
+    if (response.data.by === "default") {
+      setError("Hum...Cidade não encontrada");
+      setInput("");
+      setCity(null);
+      Keyboard.dismiss();
+      return;
+    }
     
+    setCity(response.data);
+    setInput("");
+    Keyboard.dismiss();
+
   };
 
   return (
@@ -39,7 +51,7 @@ export default function Search() {
       <View style={styles.searchBox}>
         <TextInput
           value={input}
-          onChange={(value) => setInput(value)}
+          onChange={(valor) => setInput(valor)}
           placeholder="Ex:Belém, PA"
           style={styles.input}
         />
@@ -48,6 +60,9 @@ export default function Search() {
           <Feather name="search" color="#fff" size={22} />
         </TouchableOpacity>
       </View>
+
+
+      {error && <Text style={{fontSize:18, marginTop: 25}}>{error}</Text>}
     </SafeAreaView>
   );
 }
